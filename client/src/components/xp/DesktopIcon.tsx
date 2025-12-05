@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { cn } from '@/lib/utils';
 import Draggable from 'react-draggable';
 
@@ -12,10 +12,17 @@ interface DesktopIconProps {
 
 export function DesktopIcon({ id, label, icon, onDoubleClick, className }: DesktopIconProps) {
   const [isSelected, setIsSelected] = React.useState(false);
+  const nodeRef = useRef(null);
 
   return (
-    <Draggable bounds="parent" defaultPosition={{x: 0, y: 0}} grid={[10, 10]}>
+    <Draggable 
+      bounds="parent" 
+      defaultPosition={{x: 0, y: 0}} 
+      grid={[10, 10]}
+      nodeRef={nodeRef}
+    >
       <div 
+        ref={nodeRef}
         className={cn(
           "absolute flex flex-col items-center gap-1 w-[80px] cursor-pointer group p-1 rounded-sm",
           isSelected && "bg-[#0b61ff]/20 border border-[#0b61ff]/30",
