@@ -111,7 +111,7 @@ export function StartMenu({ isOpen, onClose, onItemClick, userImage }: StartMenu
            <StartMenuRightItem 
              icon={icons.github} 
              label="GitHub" 
-             onClick={() => window.open('https://github.com/sana-cs', '_blank')} 
+             onClick={() => onItemClick('github')} 
              bold 
            />
         </div>

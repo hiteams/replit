@@ -279,14 +279,14 @@ export default function Desktop() {
                      <button className="w-6 h-6 rounded-full bg-gray-300 text-gray-600 flex items-center justify-center shadow-sm">→</button>
                   </div>
                   <div className="flex-1 bg-white border border-gray-400 h-[22px] flex items-center px-2 text-xs text-gray-600 font-sans">
-                     http://www.linkedin.com/in/sana-cs
+                     {win.content === 'internet' ? 'http://www.linkedin.com/in/sana-cs' : 'https://github.com/sana-cs'}
                   </div>
                </div>
                <div className="flex-1 bg-white p-4 flex flex-col items-center justify-center gap-4">
                   <img src={internetIcon} alt="Internet" className="w-16 h-16 opacity-50" />
-                  <p className="text-gray-500 mb-2">External Link - LinkedIn</p>
+                  <p className="text-gray-500 mb-2">External Link - {win.content === 'internet' ? 'LinkedIn' : 'GitHub'}</p>
                   <a 
-                     href="http://www.linkedin.com/in/sana-cs" 
+                     href={win.content === 'internet' ? 'http://www.linkedin.com/in/sana-cs' : 'https://github.com/sana-cs'} 
                      target="_blank"
                      className="px-6 py-2 bg-[#0054E3] text-white rounded shadow hover:bg-[#0046bd] transition-colors"
                   >
@@ -333,6 +333,7 @@ export default function Desktop() {
             if (action === 'contact') openWindow('contact', 'Contact', mailIcon, 'contact', 'custom');
             if (action === 'cv') openWindow('cv', 'My CV', certIcon, 'cv', 'custom');
             if (action === 'internet') openWindow('internet', 'LinkedIn', internetIcon, 'internet', 'browser');
+            if (action === 'github') openWindow('github', 'GitHub', internetIcon, 'github', 'browser');
             setIsStartOpen(false);
          }}
          userImage={userPhoto}
