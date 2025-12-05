@@ -149,7 +149,7 @@ export default function Desktop() {
                       
                       <div className="mt-4 pt-4 border-t border-gray-200">
                          <a 
-                           href="https://www.linkedin.com/in/sana-cs" 
+                           href="http://www.linkedin.com/in/sana-cs" 
                            target="_blank" 
                            className="text-blue-600 underline hover:text-blue-800 flex items-center gap-1"
                          >
@@ -201,7 +201,7 @@ export default function Desktop() {
                    <ContactItem icon={<Mail className="text-white" />} color="bg-[#E94E38]" label="Email" value="sanasiddiqui.cs@gmail.com" href="mailto:sanasiddiqui.cs@gmail.com" />
                    <ContactItem icon={<Phone className="text-white" />} color="bg-[#3E9C43]" label="Phone" value="+971 502 968 897" href="tel:+971502968897" />
                    <ContactItem icon={<MapPin className="text-white" />} color="bg-[#E78F28]" label="Location" value="Dubai, UAE" />
-                   <ContactItem icon={<Linkedin className="text-white" />} color="bg-[#0077B5]" label="LinkedIn" value="linkedin.com/in/sana-cs" href="https://www.linkedin.com/in/sana-cs" />
+                   <ContactItem icon={<Linkedin className="text-white" />} color="bg-[#0077B5]" label="LinkedIn" value="linkedin.com/in/sana-cs" href="http://www.linkedin.com/in/sana-cs" />
                    <ContactItem icon={<Github className="text-white" />} color="bg-[#333]" label="GitHub" value="github.com/sana-cs" href="https://github.com/sana-cs" />
                    <ContactItem icon={<Globe className="text-white" />} color="bg-[#245DDA]" label="Portfolio" value="This Interactive Resume" href="#" />
                 </div>
@@ -279,14 +279,14 @@ export default function Desktop() {
                      <button className="w-6 h-6 rounded-full bg-gray-300 text-gray-600 flex items-center justify-center shadow-sm">→</button>
                   </div>
                   <div className="flex-1 bg-white border border-gray-400 h-[22px] flex items-center px-2 text-xs text-gray-600 font-sans">
-                     https://www.linkedin.com/in/sana-cs
+                     http://www.linkedin.com/in/sana-cs
                   </div>
                </div>
                <div className="flex-1 bg-white p-4 flex flex-col items-center justify-center gap-4">
                   <img src={internetIcon} alt="Internet" className="w-16 h-16 opacity-50" />
                   <p className="text-gray-500 mb-2">External Link - LinkedIn</p>
                   <a 
-                     href="https://www.linkedin.com/in/sana-cs" 
+                     href="http://www.linkedin.com/in/sana-cs" 
                      target="_blank"
                      className="px-6 py-2 bg-[#0054E3] text-white rounded shadow hover:bg-[#0046bd] transition-colors"
                   >
