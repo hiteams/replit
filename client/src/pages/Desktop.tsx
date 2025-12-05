@@ -30,10 +30,8 @@ const EXPERIENCE_DATA = [
 ];
 
 export default function Desktop() {
-  const [windows, setWindows] = useState([
-    { id: 'welcome', title: 'Welcome', icon: notepadIcon, isOpen: true, isMinimized: false, content: 'welcome', type: 'text', zIndex: 1 }
-  ]);
-  const [activeWindowId, setActiveWindowId] = useState<string | null>('welcome');
+  const [windows, setWindows] = useState<any[]>([]);
+  const [activeWindowId, setActiveWindowId] = useState<string | null>(null);
   const [isStartOpen, setIsStartOpen] = useState(false);
   const [nextZIndex, setNextZIndex] = useState(10);
 
@@ -262,10 +260,27 @@ export default function Desktop() {
           
           {win.type === 'folder' && win.content === 'projects' && (
              <div className="grid grid-cols-3 gap-4 p-2">
-                {['Rideware HRMS', 'AML Screening', 'Retail AI Copilot'].map((proj, i) => (
-                   <div key={i} className="flex flex-col items-center gap-2 p-4 hover:bg-[#E8F1FC] border border-transparent hover:border-[#9BC2E7] cursor-pointer rounded">
+                {[
+                  { name: 'Dependency Injection (WebAPI)', tech: '.NET' },
+                  { name: 'CRUD in MVC5', tech: '.NET' },
+                  { name: '.NET Basic Classes', tech: '.NET' },
+                  { name: 'Java Basic/CRUD', tech: 'Java' },
+                  { name: 'OOPS in .Net', tech: '.NET' },
+                  { name: 'Angular Lazy Loading', tech: 'Angular' },
+                  { name: 'Angular User Management', tech: 'Angular' },
+                  { name: 'Smart Grid', tech: 'Angular' },
+                  { name: 'React CRUD with Express.js', tech: 'React' },
+                  { name: 'React useState Menu', tech: 'React' },
+                  { name: 'Telerik UI Demo', tech: 'Angular+Telerik' },
+                  { name: 'Task & ValueTask', tech: '.NET' },
+                  { name: 'Retail Analytics Copilot', tech: 'Python' },
+                  { name: 'Rideware HRMS', tech: 'Angular/.NET' },
+                  { name: 'AML Screening', tech: 'Angular/.NET' }
+                ].map((proj, i) => (
+                   <div key={i} className="flex flex-col items-center gap-2 p-4 hover:bg-[#E8F1FC] border border-transparent hover:border-[#9BC2E7] cursor-pointer rounded group">
                       <img src={folderIcon} alt="" className="w-12 h-12" />
-                      <span className="text-center text-sm font-medium">{proj}</span>
+                      <span className="text-center text-sm font-medium leading-tight group-hover:text-[#0054E3]">{proj.name}</span>
+                      <span className="text-center text-xs text-gray-500">{proj.tech}</span>
                    </div>
                 ))}
              </div>
