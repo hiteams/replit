@@ -259,23 +259,43 @@ export default function Desktop() {
           )}
           
           {win.type === 'folder' && win.content === 'projects' && (
-             <div className="grid grid-cols-3 gap-4 p-2">
+             <div className="flex flex-col gap-4 p-2 h-full">
+                {/* Profile Links */}
+                <div className="flex gap-4 p-2 bg-[#FFFFE1] border border-[#E2C779] rounded-sm shrink-0">
+                   <div 
+                      className="flex items-center gap-2 cursor-pointer hover:underline text-blue-700"
+                      onClick={() => window.open('https://github.com/sanaSoftwareengg', '_blank')}
+                   >
+                      <Github size={16} />
+                      <span className="text-sm font-bold">github.com/sanaSoftwareengg</span>
+                   </div>
+                   <div className="w-[1px] bg-[#E2C779]"></div>
+                   <div 
+                      className="flex items-center gap-2 cursor-pointer hover:underline text-blue-700"
+                      onClick={() => window.open('https://github.com/SanaUber', '_blank')}
+                   >
+                      <Github size={16} />
+                      <span className="text-sm font-bold">github.com/SanaUber</span>
+                   </div>
+                </div>
+
+                <div className="grid grid-cols-3 gap-4 overflow-y-auto">
                 {[
-                  { name: 'Dependency Injection (WebAPI)', tech: '.NET', link: 'https://github.com/sana-cs' },
-                  { name: 'CRUD in MVC5', tech: '.NET', link: 'https://github.com/sana-cs' },
-                  { name: '.NET Basic Classes', tech: '.NET', link: 'https://github.com/sana-cs' },
-                  { name: 'Java Basic/CRUD', tech: 'Java', link: 'https://github.com/sana-cs' },
-                  { name: 'OOPS in .Net', tech: '.NET', link: 'https://github.com/sana-cs' },
-                  { name: 'Angular Lazy Loading', tech: 'Angular', link: 'https://github.com/sana-cs' },
-                  { name: 'Angular User Management', tech: 'Angular', link: 'https://github.com/sana-cs' },
-                  { name: 'Smart Grid', tech: 'Angular', link: 'https://github.com/sana-cs' },
-                  { name: 'React CRUD with Express.js', tech: 'React', link: 'https://github.com/sana-cs' },
-                  { name: 'React useState Menu', tech: 'React', link: 'https://github.com/sana-cs' },
-                  { name: 'Telerik UI Demo', tech: 'Angular + Telerik', link: 'https://github.com/sana-cs' },
-                  { name: 'Task & ValueTask', tech: '.NET', link: 'https://github.com/sana-cs' },
-                  { name: 'Retail Analytics Copilot', tech: 'Python', link: 'https://github.com/sana-cs' },
-                  { name: 'Rideware HRMS', tech: 'Angular/.NET', link: 'https://github.com/sana-cs' },
-                  { name: 'AML Screening', tech: 'Angular/.NET', link: 'https://github.com/sana-cs' }
+                  { name: 'Dependency Injection (WebAPI)', tech: '.NET', link: 'https://github.com/sanaSoftwareengg' },
+                  { name: 'CRUD in MVC5', tech: '.NET', link: 'https://github.com/sanaSoftwareengg' },
+                  { name: '.NET Basic Classes', tech: '.NET', link: 'https://github.com/sanaSoftwareengg' },
+                  { name: 'Java Basic/CRUD', tech: 'Java', link: 'https://github.com/sanaSoftwareengg' },
+                  { name: 'OOPS in .Net', tech: '.NET', link: 'https://github.com/sanaSoftwareengg' },
+                  { name: 'Angular Lazy Loading', tech: 'Angular', link: 'https://github.com/sanaSoftwareengg' },
+                  { name: 'Angular User Management', tech: 'Angular', link: 'https://github.com/sanaSoftwareengg' },
+                  { name: 'Smart Grid', tech: 'Angular', link: 'https://github.com/sanaSoftwareengg' },
+                  { name: 'React CRUD with Express.js', tech: 'React', link: 'https://github.com/SanaUber' },
+                  { name: 'React useState Menu', tech: 'React', link: 'https://github.com/SanaUber' },
+                  { name: 'Telerik UI Demo', tech: 'Angular + Telerik', link: 'https://github.com/sanaSoftwareengg' },
+                  { name: 'Task & ValueTask', tech: '.NET', link: 'https://github.com/sanaSoftwareengg' },
+                  { name: 'Retail Analytics Copilot', tech: 'Python', link: 'https://github.com/SanaUber' },
+                  { name: 'Rideware HRMS', tech: 'Angular/.NET', link: 'https://github.com/sanaSoftwareengg' },
+                  { name: 'AML Screening', tech: 'Angular/.NET', link: 'https://github.com/sanaSoftwareengg' }
                 ].map((proj, i) => (
                    <div 
                       key={i} 
@@ -287,6 +307,46 @@ export default function Desktop() {
                       <span className="text-center text-xs text-gray-500">{proj.tech}</span>
                    </div>
                 ))}
+                </div>
+             </div>
+          )}
+
+          {/* GitHub Profiles Window */}
+          {win.type === 'custom' && win.content === 'github' && (
+             <div className="flex flex-col items-center justify-center h-full bg-[#F5F5F5] p-8 gap-6">
+                <img src={internetIcon} alt="GitHub" className="w-20 h-20" />
+                <h2 className="text-xl font-bold text-[#0054E3]">Select a GitHub Profile</h2>
+                <div className="flex flex-col gap-4 w-full max-w-md">
+                   <a 
+                     href="https://github.com/sanaSoftwareengg" 
+                     target="_blank"
+                     className="flex items-center gap-4 bg-white p-4 rounded shadow border border-gray-300 hover:bg-[#E8F1FC] hover:border-[#0054E3] transition-all group"
+                   >
+                      <div className="w-12 h-12 bg-[#24292e] rounded-full flex items-center justify-center text-white">
+                         <Github size={24} />
+                      </div>
+                      <div className="flex-1">
+                         <p className="font-bold text-gray-900 group-hover:text-[#0054E3]">sanaSoftwareengg</p>
+                         <p className="text-sm text-gray-500">View Profile & Repositories</p>
+                      </div>
+                      <ExternalLink size={16} className="text-gray-400 group-hover:text-[#0054E3]" />
+                   </a>
+
+                   <a 
+                     href="https://github.com/SanaUber" 
+                     target="_blank"
+                     className="flex items-center gap-4 bg-white p-4 rounded shadow border border-gray-300 hover:bg-[#E8F1FC] hover:border-[#0054E3] transition-all group"
+                   >
+                      <div className="w-12 h-12 bg-[#24292e] rounded-full flex items-center justify-center text-white">
+                         <Github size={24} />
+                      </div>
+                      <div className="flex-1">
+                         <p className="font-bold text-gray-900 group-hover:text-[#0054E3]">SanaUber</p>
+                         <p className="text-sm text-gray-500">View Profile & Repositories</p>
+                      </div>
+                      <ExternalLink size={16} className="text-gray-400 group-hover:text-[#0054E3]" />
+                   </a>
+                </div>
              </div>
           )}
 
@@ -352,7 +412,7 @@ export default function Desktop() {
             if (action === 'contact') openWindow('contact', 'Contact', mailIcon, 'contact', 'custom');
             if (action === 'cv') openWindow('cv', 'My CV', certIcon, 'cv', 'custom');
             if (action === 'internet') openWindow('internet', 'LinkedIn', internetIcon, 'internet', 'browser');
-            if (action === 'github') openWindow('github', 'GitHub', internetIcon, 'github', 'browser');
+            if (action === 'github') openWindow('github', 'GitHub Profiles', internetIcon, 'github', 'custom');
             setIsStartOpen(false);
          }}
          userImage={userPhoto}
