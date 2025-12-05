@@ -18,10 +18,10 @@ import mailIcon from '@assets/generated_images/windows_xp_mail_icon.png';
 import skillsIcon from '@assets/generated_images/windows_xp_skills_icon.png';
 import certIcon from '@assets/generated_images/windows_xp_certificate_icon.png';
 import briefcaseIcon from '@assets/generated_images/windows_xp_briefcase_icon.png';
-import pdfIcon from '@assets/Sana_Siddiqui_Resume_1764943511142.pdf'; // This is just the path string
+import pdfFile from '@assets/2025_Sana_Siddiqui_Developer_Resume_1764944896362.pdf';
 
 // Data
-const RESUME_PDF_PATH = '/attached_assets/Sana_Siddiqui_Resume_1764943511142.pdf';
+const RESUME_PDF_PATH = pdfFile;
 
 const EXPERIENCE_DATA = [
   { company: "Crowe UAE", role: "Software Developer", period: "Mar 2025 – Aug 2025", desc: "Revamped AML Screening app." },
