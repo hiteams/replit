@@ -3,6 +3,7 @@ import { Window } from '@/components/xp/Window';
 import { DesktopIcon } from '@/components/xp/DesktopIcon';
 import { Taskbar } from '@/components/xp/Taskbar';
 import { StartMenu } from '@/components/xp/StartMenu';
+import { ExternalLink, Download, Mail, MapPin, Phone, Linkedin, Github, Globe } from 'lucide-react';
 
 // Assets
 import wallpaper from '@assets/generated_images/classic_windows_xp_style_grassy_hill_with_blue_sky_and_clouds.png';
@@ -13,45 +14,14 @@ import folderIcon from '@assets/generated_images/windows_xp_folder_icon.png';
 import notepadIcon from '@assets/generated_images/windows_xp_notepad_icon.png';
 import internetIcon from '@assets/generated_images/windows_xp_internet_icon.png';
 import recycleIcon from '@assets/generated_images/windows_xp_recycle_bin_icon.png';
+import mailIcon from '@assets/generated_images/windows_xp_mail_icon.png';
+import skillsIcon from '@assets/generated_images/windows_xp_skills_icon.png';
+import certIcon from '@assets/generated_images/windows_xp_certificate_icon.png';
+import briefcaseIcon from '@assets/generated_images/windows_xp_briefcase_icon.png';
+import pdfIcon from '@assets/Sana_Siddiqui_Resume_1764943511142.pdf'; // This is just the path string
 
 // Data
-const RESUME_TEXT = `
-SANA SIDDIQUI (B.TECH COMPUTER SCIENCE)
-Dubai, UAE | +971502968897 | sanasiddiqui.cs@gmail.com
-
-PROFESSIONAL SUMMARY
-Dedicated Software Developer with 4+ years of full-stack experience in .NET Core, Angular, and SQL Server, building and maintaining scalable, secure, and user-friendly web applications. Skilled in C#, ASP.NET MVC, Web API, Entity Framework Core, ADO.NET, and SQL stored procedures.
-
-TECHNICAL SKILLS
-Frontend: Angular 12–17, TypeScript, JavaScript (ES6+), jQuery, HTML5, CSS3, Angular Material, RxJS, NGXS
-Backend: C#, .NET Framework, .NET Core 7/8, ASP.NET MVC, Web API, RESTful API, ADO.NET, Entity Framework Core
-Database: MS SQL Server, MySQL, Stored Procedures, Functions, Views
-Cloud & DevOps: Docker, Azure DevOps Pipelines, AWS, IIS, Git
-
-EXPERIENCE
-
-Crowe UAE (Mar 2025 – Aug 2025)
-Software Developer
-- Revamped an Angular-based AML Screening application with Secure API Gateway
-- Developed reusable Angular Material components
-- Implemented NgRx state management
-
-Rideware Technologies (May 2023 – Dec 2024)
-Software Developer (Technical Lead)
-- Led a team of four developers on a custom HRMS solution
-- Built encapsulated business logic using Clean Architecture
-- Optimized document storage using Lean methodology
-
-BMS Solutions (June 2022 – March 2023)
-Software Developer
-- Developed multiple web and mobile pages, fixed 600+ complex bugs
-- Built MSSQL stored procedures and Telerik reports
-
-PROJECTS
-- Rideware HRMS Software (Angular, .NET Core)
-- AML Screening and monitoring solution
-- Retail Analytics Copilot (AI Project)
-`.trim();
+const RESUME_PDF_PATH = '/attached_assets/Sana_Siddiqui_Resume_1764943511142.pdf';
 
 const EXPERIENCE_DATA = [
   { company: "Crowe UAE", role: "Software Developer", period: "Mar 2025 – Aug 2025", desc: "Revamped AML Screening app." },
@@ -113,48 +83,21 @@ export default function Desktop() {
       onClick={() => setIsStartOpen(false)}
     >
       {/* Desktop Icons */}
-      <div className="absolute top-2 left-2 flex flex-col gap-4 h-[calc(100vh-40px)] flex-wrap content-start p-2">
+      <div className="absolute top-2 left-2 flex flex-col gap-4 h-[calc(100vh-40px)] flex-wrap content-start p-2 z-0">
         <DesktopIcon 
-          id="profile" 
-          label="My Profile" 
-          icon={avatar} // Using the generated avatar for the icon
-          onDoubleClick={() => openWindow('profile', 'My Profile', avatar, 'profile', 'custom')} 
-        />
-        <DesktopIcon 
-          id="resume" 
-          label="My Resume" 
-          icon={notepadIcon} 
-          onDoubleClick={() => openWindow('resume', 'My Resume.txt', notepadIcon, RESUME_TEXT, 'text')} 
-          className="translate-y-[80px]"
-        />
-        <DesktopIcon 
-          id="projects" 
-          label="My Projects" 
-          icon={folderIcon} 
-          onDoubleClick={() => openWindow('projects', 'My Projects', folderIcon, 'projects', 'folder')} 
-          className="translate-y-[160px]"
+          id="about" 
+          label="About Me" 
+          icon={avatar} 
+          onDoubleClick={() => openWindow('profile', 'About Me', avatar, 'profile', 'custom')} 
         />
         <DesktopIcon 
           id="experience" 
           label="Experience" 
-          icon={myComputerIcon} 
-          onDoubleClick={() => openWindow('experience', 'My Experience', myComputerIcon, 'experience', 'folder')} 
-          className="translate-y-[240px]"
+          icon={briefcaseIcon} 
+          onDoubleClick={() => openWindow('experience', 'Experience', briefcaseIcon, 'experience', 'folder')} 
+          className="translate-y-[80px]"
         />
-        <DesktopIcon 
-          id="internet" 
-          label="Internet" 
-          icon={internetIcon} 
-          onDoubleClick={() => openWindow('internet', 'LinkedIn', internetIcon, 'internet', 'browser')} 
-          className="translate-y-[320px]"
-        />
-         <DesktopIcon 
-          id="recycle" 
-          label="Recycle Bin" 
-          icon={recycleIcon} 
-          onDoubleClick={() => {}} 
-          className="fixed bottom-[50px] right-4 translate-y-0"
-        />
+        {/* New Icons matching the request */}
       </div>
 
       {/* Windows */}
@@ -185,6 +128,7 @@ export default function Desktop() {
             </div>
           )}
 
+          {/* About Me / Profile Window */}
           {win.type === 'custom' && win.content === 'profile' && (
              <div className="flex flex-col sm:flex-row gap-6 p-4">
                 <div className="shrink-0 flex flex-col items-center gap-2">
@@ -202,27 +146,6 @@ export default function Desktop() {
                          <p className="font-bold mb-1">About Me:</p>
                          <p>Dedicated Software Developer with 4+ years of full-stack experience in .NET Core, Angular, and SQL Server. I build scalable, secure, and user-friendly web applications.</p>
                       </div>
-
-                      <div className="grid grid-cols-2 gap-4">
-                         <div>
-                            <h3 className="font-bold border-b border-gray-300 mb-1">Frontend</h3>
-                            <ul className="list-disc pl-4 text-gray-700">
-                               <li>Angular 12-17</li>
-                               <li>TypeScript / JS</li>
-                               <li>React</li>
-                               <li>Tailwind / CSS3</li>
-                            </ul>
-                         </div>
-                         <div>
-                            <h3 className="font-bold border-b border-gray-300 mb-1">Backend</h3>
-                            <ul className="list-disc pl-4 text-gray-700">
-                               <li>.NET Core 7/8</li>
-                               <li>C# / ASP.NET</li>
-                               <li>SQL Server</li>
-                               <li>Entity Framework</li>
-                            </ul>
-                         </div>
-                      </div>
                       
                       <div className="mt-4 pt-4 border-t border-gray-200">
                          <a 
@@ -235,6 +158,89 @@ export default function Desktop() {
                       </div>
                    </div>
                 </div>
+             </div>
+          )}
+
+          {/* CV Window */}
+          {win.type === 'custom' && win.content === 'cv' && (
+             <div className="flex flex-col items-center justify-center h-[300px] bg-[#F5F5F5] border-t border-white">
+                <div className="bg-white p-8 shadow-md border border-gray-300 flex flex-col items-center gap-4 w-[300px]">
+                   <div className="w-16 h-20 bg-red-600 rounded-sm flex items-center justify-center shadow-sm">
+                      <span className="text-white font-bold text-lg">PDF</span>
+                   </div>
+                   <div className="text-center">
+                      <p className="font-bold text-lg">Sana_Siddiqui_Resume.pdf</p>
+                      <p className="text-gray-500 text-sm">PDF Document</p>
+                   </div>
+                   <div className="flex gap-2 w-full mt-2">
+                      <a 
+                        href={RESUME_PDF_PATH} 
+                        download="Sana_Siddiqui_Resume.pdf"
+                        className="flex-1 py-2 bg-[#0054E3] text-white rounded shadow hover:bg-[#0046bd] flex items-center justify-center gap-2 text-sm font-bold transition-colors"
+                      >
+                         <Download size={16} /> Download CV
+                      </a>
+                      <a 
+                        href={RESUME_PDF_PATH} 
+                        target="_blank"
+                        className="flex-1 py-2 bg-[#ECE9D8] text-black border border-gray-400 rounded shadow hover:bg-white flex items-center justify-center gap-2 text-sm font-bold transition-colors"
+                      >
+                         <ExternalLink size={16} /> View
+                      </a>
+                   </div>
+                </div>
+             </div>
+          )}
+
+          {/* Contact Window */}
+          {win.type === 'custom' && win.content === 'contact' && (
+             <div className="p-4 flex flex-col gap-4 bg-[#F5F5F5] h-full">
+                <h3 className="font-bold text-[#0054E3] border-b border-gray-300 pb-2">Contact Information</h3>
+                
+                <div className="flex flex-col gap-3">
+                   <ContactItem icon={<Mail className="text-white" />} color="bg-[#E94E38]" label="Email" value="sanasiddiqui.cs@gmail.com" href="mailto:sanasiddiqui.cs@gmail.com" />
+                   <ContactItem icon={<Phone className="text-white" />} color="bg-[#3E9C43]" label="Phone" value="+971 502 968 897" href="tel:+971502968897" />
+                   <ContactItem icon={<MapPin className="text-white" />} color="bg-[#E78F28]" label="Location" value="Dubai, UAE" />
+                   <ContactItem icon={<Linkedin className="text-white" />} color="bg-[#0077B5]" label="LinkedIn" value="linkedin.com/in/sana-cs" href="https://www.linkedin.com/in/sana-cs" />
+                   <ContactItem icon={<Github className="text-white" />} color="bg-[#333]" label="GitHub" value="github.com/sana-cs" href="https://github.com/sana-cs" />
+                   <ContactItem icon={<Globe className="text-white" />} color="bg-[#245DDA]" label="Portfolio" value="This Interactive Resume" href="#" />
+                </div>
+             </div>
+          )}
+
+          {/* Skills Window */}
+          {win.type === 'custom' && win.content === 'skills' && (
+             <div className="p-4 bg-white h-full overflow-y-auto">
+                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <SkillSection title="Frontend Development">
+                       <SkillItem name="Angular" level={95} />
+                       <SkillItem name="React" level={85} />
+                       <SkillItem name="TypeScript / JS" level={90} />
+                       <SkillItem name="Tailwind CSS" level={90} />
+                       <SkillItem name="HTML5 / CSS3" level={95} />
+                    </SkillSection>
+                    
+                    <SkillSection title="Backend Development">
+                       <SkillItem name=".NET Core 7/8" level={90} />
+                       <SkillItem name="C#" level={90} />
+                       <SkillItem name="ASP.NET MVC" level={85} />
+                       <SkillItem name="Web API" level={90} />
+                       <SkillItem name="Entity Framework" level={85} />
+                    </SkillSection>
+
+                    <SkillSection title="Database">
+                       <SkillItem name="MS SQL Server" level={90} />
+                       <SkillItem name="MySQL" level={80} />
+                       <SkillItem name="Stored Procedures" level={85} />
+                    </SkillSection>
+
+                    <SkillSection title="Tools & DevOps">
+                       <SkillItem name="Git / GitHub" level={90} />
+                       <SkillItem name="Azure DevOps" level={80} />
+                       <SkillItem name="Docker" level={70} />
+                       <SkillItem name="AWS" level={65} />
+                    </SkillSection>
+                 </div>
              </div>
           )}
 
@@ -320,10 +326,12 @@ export default function Desktop() {
          isOpen={isStartOpen} 
          onClose={() => setIsStartOpen(false)} 
          onItemClick={(action) => {
-            if (action === 'profile') openWindow('profile', 'My Profile', avatar, 'profile', 'custom');
-            if (action === 'resume') openWindow('resume', 'My Resume.txt', notepadIcon, RESUME_TEXT, 'text');
-            if (action === 'experience') openWindow('experience', 'My Experience', myComputerIcon, 'experience', 'folder');
+            if (action === 'profile') openWindow('profile', 'About Me', avatar, 'profile', 'custom');
+            if (action === 'experience') openWindow('experience', 'Experience', briefcaseIcon, 'experience', 'folder');
+            if (action === 'skills') openWindow('skills', 'Technical Skills', skillsIcon, 'skills', 'custom');
             if (action === 'projects') openWindow('projects', 'My Projects', folderIcon, 'projects', 'folder');
+            if (action === 'contact') openWindow('contact', 'Contact', mailIcon, 'contact', 'custom');
+            if (action === 'cv') openWindow('cv', 'My CV', certIcon, 'cv', 'custom');
             if (action === 'internet') openWindow('internet', 'LinkedIn', internetIcon, 'internet', 'browser');
             setIsStartOpen(false);
          }}
@@ -331,4 +339,53 @@ export default function Desktop() {
       />
     </div>
   );
+}
+
+// Helper Components
+function ContactItem({ icon, color, label, value, href }: any) {
+   const Content = () => (
+      <div className="flex items-center gap-4 bg-white p-3 rounded shadow-sm border border-gray-200 hover:bg-gray-50 transition-colors w-full">
+         <div className={`w-10 h-10 ${color} rounded flex items-center justify-center shrink-0 shadow-sm`}>
+            {icon}
+         </div>
+         <div className="flex-1 overflow-hidden">
+            <p className="text-xs font-bold text-gray-500 uppercase tracking-wide">{label}</p>
+            <p className="font-medium text-gray-900 truncate">{value}</p>
+         </div>
+         {href && <ExternalLink size={14} className="text-gray-400" />}
+      </div>
+   );
+
+   if (href) {
+      return <a href={href} target={href.startsWith('http') ? '_blank' : undefined} className="block w-full">{<Content />}</a>;
+   }
+   return <Content />;
+}
+
+function SkillSection({ title, children }: any) {
+   return (
+      <div className="mb-4">
+         <h3 className="font-bold text-[#0054E3] border-b border-gray-200 pb-1 mb-3">{title}</h3>
+         <div className="space-y-3">
+            {children}
+         </div>
+      </div>
+   );
+}
+
+function SkillItem({ name, level }: any) {
+   return (
+      <div>
+         <div className="flex justify-between text-sm mb-1">
+            <span className="font-medium">{name}</span>
+            <span className="text-gray-500">{level}%</span>
+         </div>
+         <div className="h-2 bg-gray-100 rounded-full overflow-hidden border border-gray-200">
+            <div 
+               className="h-full bg-gradient-to-r from-[#245DDA] to-[#2683FF]" 
+               style={{ width: `${level}%` }}
+            />
+         </div>
+      </div>
+   );
 }
